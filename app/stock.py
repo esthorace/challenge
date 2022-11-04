@@ -37,7 +37,7 @@ def is_product_available(product_name: str, quantity: int):
         return False
 
     # Function
-    stock: bool = (product["quantity"] > quantity).bool()
+    stock: bool = (product["quantity"] >= quantity).bool()
     if stock:
         logging.info("Stock is available")
         return True
