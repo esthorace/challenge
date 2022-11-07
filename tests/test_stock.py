@@ -8,9 +8,9 @@ from app import stock
 
 
 def test_stock():
-    assert stock.is_product_available(12, 1) == False
-    assert stock.is_product_available("Chocolate", "12") == False
-    assert stock.is_product_available("Chocolate", 1.1) == False
+    assert stock.is_product_available(12, 1) == False  # type: ignore
+    assert stock.is_product_available("Chocolate", "12") == False  # type: ignore
+    assert stock.is_product_available("Chocolate", 1.1) == False  # type: ignore
     assert stock.is_product_available("Chocolate", -1) == False
     assert stock.is_product_available("Chocolate", 0) == False
     assert stock.is_product_available("Chocolate", 1) == True
