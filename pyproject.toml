@@ -5,7 +5,10 @@ description = ""
 authors = [
     {name = "Esteban Acevedo", email = "esteban.horacio.acevedo@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "requests>=2.28.1",
+    "pandas>=1.5.1",
+]
 requires-python = ">=3.11"
 license = {text = "MIT"}
 
