@@ -12,35 +12,32 @@ _PRODUCT_DF = pd.DataFrame(
 )
 
 
-def is_product_available(product_name: str, quantity: int):
-
-    # Validate product name
-    if not isinstance(product_name, str):
-        logging.error("Value is not str")
-        return False
-
-    # Validate quantity
-    if not isinstance(quantity, int):
-        logging.error("Value is not int")
-        return False
-    elif quantity < 0:
-        logging.warning("Value is less than 0")
-        return False
-    elif quantity == 0:
-        logging.warning("Value is equal to 0")
-        return False
-
-    # Get product name
-    product: pd.DataFrame = _PRODUCT_DF[_PRODUCT_DF["product_name"] == product_name]
-    if product.empty:
-        logging.warning(f"Value '{product_name}' not found")
-        return False
-
-    # Function
-    stock: bool = (product["quantity"] >= quantity).bool()
-    if stock:
-        logging.info("Stock is available")
+def are_there_products() -> bool:
+    logging.debug("Verificando productos")
+    if len(_PRODUCT_DF):
         return True
     else:
-        logging.info("Stock is not available")
+        return False
+
+
+def are_there_stock() -> bool | dict:
+    logging.debug("Verificando stock en productos")
+    products = _PRODUCT_DF.query("quantity > 0")
+    if products.empty:
+        return False
+    else:
+        products_dict = {}
+        products_list = products.to_numpy().tolist()
+        for index, product in enumerate(products_list, start=1):
+            products_dict[str(index)] = product
+        return products_dict
+
+
+def is_product_available(product_name: str, quantity: int) -> bool:
+    logging.debug("Verificando si hay stock en el producto seleccionado")
+    product: pd.DataFrame = _PRODUCT_DF[_PRODUCT_DF["product_name"] == product_name]
+    stock: bool = (product["quantity"] >= quantity).bool()
+    if stock:
+        return True
+    else:
         return False
