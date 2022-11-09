@@ -13,6 +13,7 @@ _PRODUCT_DF = pd.DataFrame(
 
 
 def are_there_products() -> bool:
+    """Verifica si existen productos en los datos, por lo menos uno"""
     logging.debug("Verificando productos")
     if len(_PRODUCT_DF):
         return True
@@ -21,6 +22,7 @@ def are_there_products() -> bool:
 
 
 def are_there_stock() -> bool | dict:
+    """Verifica en todos los productos si hay, aunque sea en uno, stock"""
     logging.debug("Verificando stock en productos")
     products = _PRODUCT_DF.query("quantity > 0")
     if products.empty:
@@ -34,6 +36,7 @@ def are_there_stock() -> bool | dict:
 
 
 def is_product_available(product_name: str, quantity: int) -> bool:
+    """Verifica si hay stock según la cantidad especificada para el producto especificado"""
     logging.debug("Verificando si hay stock en el producto seleccionado")
     if not isinstance(quantity, int) or quantity <= 0:
         return False

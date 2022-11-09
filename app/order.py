@@ -1,4 +1,6 @@
 def show_products(products: dict) -> None:
+    """Muestra los productos, enumerándolos, para que sea más fácil
+    elegir uno."""
     print("\nProductos y stock disponible:")
     for index, product_quantity in products.items():
         print(f" {index} - {product_quantity[0]} (cantidad: {product_quantity[1]})")
@@ -7,6 +9,7 @@ def show_products(products: dict) -> None:
 
 
 def choose_product(products: dict) -> str | bool:
+    """Elige un producto y lo busca según su clave en el diccionario"""
     while True:
         product = input("Elija el producto: ")
         if product.strip().lower() == "s":
@@ -19,6 +22,7 @@ def choose_product(products: dict) -> str | bool:
 
 
 def choose_quantity() -> int | bool:
+    """Elige la cantidad de un producto y se valida el ingreso"""
     while True:
         quantity = input("Escriba la cantidad: ")
         if quantity.strip().lower() == "s":
@@ -27,8 +31,6 @@ def choose_quantity() -> int | bool:
             quantity_int = int(quantity)
         except ValueError:
             print("La cantidad debe ser un número entero")
-        except KeyboardInterrupt:
-            return False
         else:
             if quantity_int < 0 or quantity_int == 0:
                 print("La cantidad debe se mayor a 0")
@@ -37,6 +39,11 @@ def choose_quantity() -> int | bool:
 
 
 def main(products) -> bool | tuple:
+    """
+    1. Muestra los productos
+    2. Elige el producto
+    3. Ingresa cantidad
+    """
     while True:
         show_products(products)
         product_name = choose_product(products)

@@ -14,6 +14,8 @@ class GeoAPI:
 
     @classmethod
     def is_hot_in_pehuajo(cls) -> bool | None:
+        """Comprueba la temperatura en tiempo real usando una API. 
+        Devuelve True si es mayor a la temperature dada, o False."""
         try:
             logging.debug("Abriendo API")
             response = requests.get(

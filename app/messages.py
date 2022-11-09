@@ -11,15 +11,17 @@ def query_exit() -> bool:
 
 
 def no_connection() -> None:
-    message = " ❌ No tenemos conexión por el momento. Vuelve a intentar."
+    message = " ❌ No tenemos conexión por el momento. Vuelve a intentar más tarde."
     show_message(message)
 
 
 def welcome(temperature) -> None:
-    if temperature:  # Mayor a 28 grados
-        message = " 👋 ¡Bienvenido! Hoy hace calor, un buen helado puede refrescarte..."
+    """Si la temperatura es mayor a la estimada, devuelve un saludo, de lo contrario
+    devuelve otro."""
+    if temperature:
+        message = "😊 ¡Bienvenid@! 👋Hoy hace calor, un buen helado puede refrescarte..."
     else:
-        message = " 👋 ¡Bienvenido! Hoy está fresco, y, aún así, algo dulce puede venirte bien..."
+        message = "😊 ¡Bienvenid@! 👋Hoy está fresco, ¡pero un helado dulce puede venirte bien!"
     show_message(message)
 
 
