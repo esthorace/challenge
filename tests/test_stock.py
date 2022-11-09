@@ -8,15 +8,11 @@ from app import stock
 
 
 def test_stock():
-    assert stock.is_product_available(12, 1) == False  # type: ignore
-    assert stock.is_product_available("Chocolate", "12") == False  # type: ignore
-    assert stock.is_product_available("Chocolate", 1.1) == False  # type: ignore
     assert stock.is_product_available("Chocolate", -1) == False
     assert stock.is_product_available("Chocolate", 0) == False
     assert stock.is_product_available("Chocolate", 1) == True
     assert stock.is_product_available("Chocolate", 2) == True
     assert stock.is_product_available("Chocolate", 3) == True
     assert stock.is_product_available("Chocolate", 4) == False
-    assert stock.is_product_available("*", 1) == False
     assert stock.is_product_available("Limon", 0) == False
     assert stock.is_product_available("Dulce de Leche", 5) == True

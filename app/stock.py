@@ -35,6 +35,8 @@ def are_there_stock() -> bool | dict:
 
 def is_product_available(product_name: str, quantity: int) -> bool:
     logging.debug("Verificando si hay stock en el producto seleccionado")
+    if not isinstance(quantity, int) or quantity <= 0:
+        return False
     product: pd.DataFrame = _PRODUCT_DF[_PRODUCT_DF["product_name"] == product_name]
     stock: bool = (product["quantity"] >= quantity).bool()
     if stock:

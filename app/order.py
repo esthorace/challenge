@@ -1,6 +1,3 @@
-import logging
-
-
 def show_products(products: dict) -> None:
     print("\nProductos y stock disponible:")
     for index, product_quantity in products.items():
