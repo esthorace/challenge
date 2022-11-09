@@ -12,7 +12,7 @@ def main():
     7. Verifica si hay stock sobre la cantidad del producto solicitada 
     8. El usuario ingresa un código de descuento
     9. Verifica el código de descuento
-    9. Confirma el pedido
+    10. Confirma el pedido
     """
     while True:
         temperature: bool | None = weather.GeoAPI.is_hot_in_pehuajo()
