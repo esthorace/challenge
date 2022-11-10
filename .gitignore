@@ -4,7 +4,7 @@ __pycache__
 # virtualenv
 .venv
 pdm.lock
-*.pdm.toml
+.pdm.toml
 
 # visual studio code
 .vscode
