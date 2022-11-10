@@ -1,7 +1,18 @@
-.vscode
-.venv
+# python
 __pycache__
-*.pyc
+
+# virtualenv
+.venv
+pdm.lock
+*.pdm.toml
+
+# visual studio code
+.vscode
+
+# pytest
 .pytest_cache
+
+# pytest-cov
 htmlcov
 .coverage
+
